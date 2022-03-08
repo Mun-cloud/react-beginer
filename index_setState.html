@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    /** 리엑트와 리엑트-돔의 차이점
+     * React = 어플리케이션이 interactive하도록 만들어주는 library
+     * React-DOM은 library 또는 package인데 모든 React element들을 HTML body에 둘 수 있도록 해줌
+     */
+    /** 리엑트의 강점은 기존 JS는 HTML에서부터 요소를 가져-옴. but, 리엑트는 JS로부터 HTML을 만들어 냄
+     * 따라서 사용자에게 보여질 요소들을 컨트롤 할 수 있음.
+     */
+    // 리엑트를 이용해 요소를 만드는 방식(현업에서 쓰이지 않는 어려운 방식)
+    const root = document.getElementById("root");
+    const App = () => {
+        const [counter, setCounter] = React.useState(0);
+        const onClick = () => {
+            // 아래의 방식은 state값이 다른 곳에서 변경된 경우 결과값이
+            // 예상한 값과 다를 수 있음.
+            /* setCounter(counter + 1) */
+            // 따라서 아래와 같이 현재 state값을 보장하는 코드로 바꿔주는 것이 좋다.
+            // 함수의 첫번째 요소는 state의 현재 값이다.
+            setCounter((current) => current + 1);
+        };
+        return (
+            <div>
+                <h3>Total clicks: {counter}</h3>
+                <button onClick={onClick}>Click me</button>
+            </div>
+        );
+    };
+
+    ReactDOM.render(<App />, root);
+</script>
+
+</html>
