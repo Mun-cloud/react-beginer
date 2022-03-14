@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-import Button from "./Button";
-import ToDoList from "./ToDoList";
-import CoinTracker from "./CoinTracker";
-import MovieApp from "./MovieApp";
+import Button from "../Button";
+import ToDoList from "../ToDoList";
+import CoinTracker from "../CoinTracker";
+import MovieApp from "../MovieApp";
 
 const Home = () => {
   const [choice, setChoice] = useState();
